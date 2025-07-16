@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/RaideriSpace/projeto_final_bloco_01#readme",
   "dependencies": {
-    "@types/node": "^24.0.14"
+    "@types/node": "^24.0.14",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "@types/readline-sync": "^1.4.8"
