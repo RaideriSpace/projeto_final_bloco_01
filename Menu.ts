@@ -1,4 +1,9 @@
+import { ItensEspeciais } from "./src/model/ItensEspeciais";
+import { ItensMagicos } from "./src/model/ItensMagicos";
 import rl from "readline-sync";
+import { ItensNormais } from "./src/model/ItensNormais";
+import { Conta } from "./src/model/Conta";
+import { PetsMontarias } from "./src/model/PetsMontarias";
 
 export function main() {
   // Variaveis auxiliares para cadastro e manipulação.
@@ -23,13 +28,28 @@ export function main() {
   // Itens Para Teste
 
   // let item: ItemNormal = new ItemNormal(itemNome, itemPreco, itemEstoque, tipo, ranqueItem);
+  let conta = new Conta("Geandro", 500, 2);
+  let itemNormal1 = new ItensNormais(5, 12.5, 1, "Machado", 2);
+  let itemNormal2 = new ItensNormais(2, 50, 1, "Arco Gigante", 5);
+  let itemMagico1 = new ItensMagicos(5, 18.5, 2, "Escama de Dragao Negro", 10);
+  let itemMagico2 = new ItensMagicos(
+    2,
+    80,
+    2,
+    "Cubo Mágico de aço Faérico ",
+    10
+  );
+  let itemEspecial1 = new ItensEspeciais(2, 50, 1, "Uo Uo no Mi", "One Piece");
+  let itemEspecial2 = new ItensEspeciais(2, 50, 1, "Pokebola", "Pokemon");
+  let pet1 = new PetsMontarias(2, 800, 4, "Porco Voador Assombrado", "Hibrido");
+  let pet2 = new PetsMontarias(2, 800, 4, "Mini Dragao Oriental", "Aereo");
 
   while (true) {
     console.clear();
     console.log(`\nRaiMystic Store\n`);
-    console.log(`Olá, usuario, bem vindo a nossa loja!`);
-    console.log(`Conta nivel: 3`);
-    console.log(`Meu saldo: $ 0,00`);
+    console.log(`Olá, ${conta.usuario}, bem vindo a nossa loja!`);
+    console.log(`Conta nivel: ${conta.nivelConta}`);
+    console.log(`Meu saldo: $ ${conta.saldo.toFixed(2)}`);
     console.log(`Meu carrinho: $ 0,00`);
     console.log(`\nO que deseja fazer hoje:\n`);
     console.log(`1 - Ver Itens`);
@@ -67,24 +87,32 @@ export function main() {
           case 1:
             console.clear();
             console.log(`\n Lista de Itens Normais\n`);
+            itemNormal1.mostrar();
+            itemNormal2.mostrar();
             keyPress();
             break;
 
           case 2:
             console.clear();
             console.log(`\n Lista de Itens Magicos\n`);
+            itemMagico1.mostrar();
+            itemMagico2.mostrar();
             keyPress();
             break;
 
           case 3:
             console.clear();
             console.log(`\n Lista de Itens Especiais\n`);
+            itemEspecial1.mostrar();
+            itemEspecial2.mostrar();
             keyPress();
             break;
 
           case 4:
             console.clear();
             console.log(`\n Lista de Pets e Montarias\n`);
+            pet1.mostrar();
+            pet2.mostrar();
             keyPress();
             break;
 
