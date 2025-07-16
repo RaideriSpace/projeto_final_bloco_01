@@ -112,13 +112,13 @@ export function main() {
   itens.cadastrarItem(pet2);
 
   console.clear();
-  // console.log(`\nBem vindo a RaiMystic Store\n`);
-  // usuario = rl.question(`Me diga seu nome: `);
-  // saldo = rl.questionFloat(`Quanto voce tem de saldo: $ `);
-  // nivelConta = rl.questionInt(`Qual seu nivel: `);
-  usuario = "Usuario";
-  saldo = 5000;
-  nivelConta = 10;
+  console.log(`\nBem vindo a RaiMystic Store\n`);
+  usuario = rl.question(`Me diga seu nome: `);
+  saldo = rl.questionFloat(`Quanto voce tem de saldo: $ `);
+  nivelConta = rl.questionInt(`Qual seu nivel: `);
+  // usuario = "Usuario";
+  // saldo = 5000;
+  // nivelConta = 10;
   let conta = new Conta(usuario, saldo, nivelConta);
 
   try {
@@ -132,10 +132,11 @@ export function main() {
       console.log(`\nO que deseja fazer hoje:\n`);
       console.log(`1 - Ver Itens`);
       console.log(`2 - Ver Carrinho`);
-      console.log(`3 - Depositar`);
-      console.log(`4 - Finalizar Compra`);
-      console.log(`5 - Cadastrar meu item`);
-      console.log(`6 - Mudar Conta`);
+      console.log(`3 - Remover item do carrinho`);
+      console.log(`4 - Depositar`);
+      console.log(`5 - Finalizar Compra`);
+      console.log(`6 - Cadastrar meu item`);
+      console.log(`7 - Mudar Conta`);
       console.log(`0 - Sair\n`);
 
       opcao = rl.questionInt("");
@@ -217,14 +218,22 @@ export function main() {
           keyPress();
           break;
 
-        case 3: // Depositar Dinheiro
+        case 3: // Remover item do carrinho
+          console.clear();
+          console.log(`\n Remover Item do Carrinho \n`);
+          itens.deletarItemCarrinho();
+          keyPress();
+          break;
+
+        case 4: // Depositar Dinheiro
           console.clear();
           console.log(`\n Depositar\n`);
           let deposito = rl.questionFloat(`Quanto deseja depositar? $ `);
           conta.depositar(deposito);
+          keyPress();
           break;
 
-        case 4: // Finalizar Compra
+        case 5: // Finalizar Compra
           console.clear();
           console.log(`\n Finalizar Compra\n`);
           if (conta.saldo > itens.totalCarrinho()) {
@@ -239,7 +248,7 @@ export function main() {
           keyPress();
           break;
 
-        case 5: // Cadastro de Item
+        case 6: // Cadastro de Item
           console.clear();
           console.log(`\n Cadastro de Item\n`);
           itemNome = rl.question("Nome do item: ");
@@ -312,7 +321,7 @@ export function main() {
           keyPress();
           break;
 
-        case 6: // Mudar Conta
+        case 7: // Mudar Conta
           console.clear();
           console.log(`\n Mudar Conta\n`);
           usuario = rl.question(`Qual seu nome: `);

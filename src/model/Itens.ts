@@ -103,6 +103,10 @@ export abstract class Itens {
     } 
   }
 
+  public adicionarEstoque(value: number): void{
+    this.itemEstoque += value;
+  }
+
   public removerEstoque(value: number): void{
     if (this.itemEstoque >= value) {
       this.itemEstoque -= value;
