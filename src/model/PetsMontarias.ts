@@ -4,13 +4,15 @@ export class PetsMontarias extends Itens {
   private _tipoDeTerreno: string;
 
   constructor(
-    itemEstoque: number,
-    itemPreco: number,
+    itemID: number,
     tipo: number,
     itemNome: string,
-    tipoDeTerreno: string
+    itemPreco: number,
+    itemEstoque: number,
+    tipoDeTerreno: string,
+    itemDono?: string,
   ) {
-    super(itemEstoque, itemPreco, tipo, itemNome);
+    super(itemID, itemEstoque, itemPreco, tipo, itemNome, itemDono);
     this._tipoDeTerreno = tipoDeTerreno;
   }
 

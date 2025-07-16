@@ -4,13 +4,15 @@ export class ItensEspeciais extends Itens {
   private _universoRetirado: string;
 
   constructor(
-    itemEstoque: number,
-    itemPreco: number,
+    itemID: number,
     tipo: number,
     itemNome: string,
-    universoRetirado: string
+    itemPreco: number,
+    itemEstoque: number,
+    universoRetirado: string,
+    itemDono?: string,
   ) {
-    super(itemEstoque, itemPreco, tipo, itemNome);
+    super(itemID, itemEstoque, itemPreco, tipo, itemNome, itemDono);
     this._universoRetirado = universoRetirado;
   }
 

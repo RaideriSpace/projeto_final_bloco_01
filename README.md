@@ -1,5 +1,11 @@
 # RaiMystic Store - Loja de Produtos Mágicos (e alguns não tão mágicos assim)
 
+## V0.3
+- Criação do ```ItemController.ts```.
+- Desenvolvimento dos métodos dentro do ```ItemController.ts``` para funcionamento da loja.
+- Aplicação dos métodos e funçõs no ```Menu.ts```.
+- Ajustes nos modelos para melhor funcionamento do ```Menu.ts``` e dos métodos de CRUD.
+
 ## V0.2
 - Criação das classe abstrata ```Itens.ts```.
 - Criação das classes ```ItensEspeciais.ts```, ```ItensMagicos.ts```, ```ItensNormais.ts```, ```PetsMontarias.ts``` e ```Conta.ts```.

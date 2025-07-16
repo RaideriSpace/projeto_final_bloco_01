@@ -4,13 +4,15 @@ export class ItensMagicos extends Itens {
   private _nivelMagia: number;
 
   constructor(
-    itemEstoque: number,
-    itemPreco: number,
+    itemID: number,
     tipo: number,
     itemNome: string,
-    nivelMagia: number
+    itemPreco: number,
+    itemEstoque: number,
+    nivelMagia: number,
+    itemDono?: string
   ) {
-    super(itemEstoque, itemPreco, tipo, itemNome);
+    super(itemID, itemEstoque, itemPreco, tipo, itemNome, itemDono);
     this._nivelMagia = nivelMagia;
   }
 

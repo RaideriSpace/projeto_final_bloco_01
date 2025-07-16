@@ -36,7 +36,12 @@ export class Conta {
     this._nivelConta = value;
   }
 
+  // Função especifica de depositar.
   public depositar(value: number): void {
     this._saldo += value;
+  }
+
+  public debito (value: number): void {
+    this._saldo -= value;
   }
 }

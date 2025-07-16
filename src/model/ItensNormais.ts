@@ -4,13 +4,15 @@ export class ItensNormais extends Itens {
   private _nivelRaridade: number;
 
   constructor(
-    itemEstoque: number,
-    itemPreco: number,
+    itemID: number,
     tipo: number,
     itemNome: string,
-    nivelRaridade: number
+    itemPreco: number,
+    itemEstoque: number,
+    nivelRaridade: number,
+    itemDono?: string
   ) {
-    super(itemEstoque, itemPreco, tipo, itemNome);
+    super(itemID, itemEstoque, itemPreco, tipo, itemNome, itemDono);
     this._nivelRaridade = nivelRaridade;
   }
 
