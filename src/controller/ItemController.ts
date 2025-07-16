@@ -6,6 +6,7 @@ import { ItensNormais } from "../model/ItensNormais";
 import { PetsMontarias } from "../model/PetsMontarias";
 import { ItensRepository } from "../repository/ItensRepository";
 import { Conta } from "../model/Conta";
+import { header } from "../../Menu";
 
 // Adição de uma mini interface interna para controle do carrinho.
 interface ItensCarrinho {
@@ -20,6 +21,7 @@ export class ItemController implements ItensRepository {
 
   listarItens = (escolha: number): void => {
     console.clear();
+    header();
     for (let item of this.itensGerais) {
       if (item.itemEstoque > 0) {
         if (item.tipo == escolha) {
@@ -30,8 +32,12 @@ export class ItemController implements ItensRepository {
   };
 
   adicionarCarrinho = (): void => {
-    let id = rl.questionInt("Digite o ID do item para adicionar ao carrinho: ");
-    let quantidade = rl.questionInt("Quantos itens deseja adicionar: ");
+    let id = rl.questionInt(
+      "       Digite o ID do item para adicionar ao carrinho: \n       "
+    );
+    let quantidade = rl.questionInt(
+      "       Quantos itens deseja adicionar:\n       "
+    );
 
     let encontrarItem = this.itensGerais.find(
       (newItem) => newItem.itemID == id
@@ -42,39 +48,42 @@ export class ItemController implements ItensRepository {
         this.meuCarrinho.push({ item: encontrarItem, quantidade: quantidade });
         encontrarItem.removerEstoque(quantidade);
         console.log(
-          `\n${quantidade} x ${encontrarItem.itemNome} foi adicionados ao seu carrinho com sucesso`
+          `\n       ${quantidade} x ${encontrarItem.itemNome} foi adicionados ao seu carrinho com sucesso\n`
         );
       } else if (quantidade > 0 && encontrarItem.itemEstoque < quantidade) {
-        console.log(`\nNao temos tantos desse item assim, desculpe.`);
+        console.log(
+          `\n              Nao temos tantos desse item assim, desculpe.`
+        );
       } else {
-        console.log(`\nNão entendi oque esta querendo fazer...`);
+        console.log(`\n              Não entendi oque esta querendo fazer...`);
       }
     } else {
-      console.log("Não temos um item com esse ID.");
+      console.log("              Não temos um item com esse ID.");
     }
   };
 
   mostrarCarrinho = (): void => {
     console.clear();
+    header();
     if (this.meuCarrinho.length != 0) {
       for (let itemCarrinho of this.meuCarrinho) {
         console.log(
-          `${
+          `              ${
             itemCarrinho.item.itemNome
           } | Preco: $ ${itemCarrinho.item.itemPreco.toFixed(2)}`
         );
-        console.log(`Quantidade: ${itemCarrinho.quantidade}\n`);
+        console.log(`              Quantidade: ${itemCarrinho.quantidade}\n`);
       }
     } else {
       console.log(
-        "\nSeu carrinho esta vazio. Adicione alguma coisa na loja de itens!\n"
+        "\n              Seu carrinho esta vazio. Adicione alguma coisa na loja de itens!\n"
       );
     }
   };
 
   cadastrarItem = (novoItem: Itens): void => {
     this.itensGerais.push(novoItem);
-    console.log("\nNovo item cadastrado com sucesso!");
+    console.log("\n              Novo item cadastrado com sucesso!");
   };
 
   comprar = (): void => {
@@ -83,17 +92,20 @@ export class ItemController implements ItensRepository {
 
   deletarItemCarrinho = (): void => {
     console.clear();
+    header();
     if (this.meuCarrinho.length != 0) {
-      console.log("\nItens no Carrinho\n");
+      console.log("\n       Itens no Carrinho\n");
       for (let itemCarrinho of this.meuCarrinho) {
         console.log(
-          `ID: ${itemCarrinho.item.itemID} ${
+          `              ID: ${itemCarrinho.item.itemID} ${
             itemCarrinho.item.itemNome
-          } | Preco: $ ${itemCarrinho.item.itemPreco.toFixed(
+          } | Preco: ß$ ${itemCarrinho.item.itemPreco.toFixed(
             2
           )} | Quantidade: ${itemCarrinho.quantidade}\n`
         );
-        let itemDelet = rl.questionInt("Digite o ID do item a remover: ");
+        let itemDelet = rl.questionInt(
+          "       Digite o ID do item a remover: \n       "
+        );
 
         let indiceItem = this.meuCarrinho.findIndex(
           (itemCarrinho) => itemCarrinho.item.itemID == itemDelet
@@ -106,14 +118,16 @@ export class ItemController implements ItensRepository {
 
           this.meuCarrinho.splice(indiceItem, 1);
 
-          console.log("\nItem Removido com sucesso do carrinho!\n");
+          console.log(
+            "\n              Item Removido com sucesso do carrinho!\n"
+          );
         } else {
-          console.log("\n Item nao encontrado no carrinho!");
+          console.log("\n              Item nao encontrado no carrinho!");
         }
       }
     } else {
       console.log(
-        "\nSeu carrinho esta vazio. Adicione alguma coisa na loja de itens!\n"
+        "\n              Seu carrinho esta vazio. Adicione alguma coisa na loja de itens!\n"
       );
     }
   };

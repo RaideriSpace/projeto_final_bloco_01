@@ -25,6 +25,6 @@ export class PetsMontarias extends Itens {
 
   public mostrar(): void {
     super.mostrar();
-    console.log(`Tipo de Terreno: ${this.tipoDeTerreno}\n`);
+    console.log(`              Tipo de Terreno: ${this.tipoDeTerreno}\n`);
   }
 }

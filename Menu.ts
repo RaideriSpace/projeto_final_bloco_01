@@ -112,10 +112,11 @@ export function main() {
   itens.cadastrarItem(pet2);
 
   console.clear();
-  console.log(`\nBem vindo a RaiMystic Store\n`);
-  usuario = rl.question(`Me diga seu nome: `);
-  saldo = rl.questionFloat(`Quanto voce tem de saldo: $ `);
-  nivelConta = rl.questionInt(`Qual seu nivel: `);
+  header();
+  console.log(`\n              Bem vindo a RaiMystic Store\n`);
+  usuario = rl.question(`                Me diga seu nome: `);
+  saldo = rl.questionFloat(`                Quantos Betouros voce tem:`);
+  nivelConta = rl.questionInt(`                Qual seu nivel: `);
   // usuario = "Usuario";
   // saldo = 5000;
   // nivelConta = 10;
@@ -124,27 +125,32 @@ export function main() {
   try {
     while (true) {
       console.clear();
-      console.log(`\nRaiMystic Store\n`);
-      console.log(`Olá, ${conta.usuario}, bem vindo a nossa loja!`);
-      console.log(`Conta nivel: ${conta.nivelConta}`);
-      console.log(`\nMeu saldo: $ ${conta.saldo.toFixed(2)}`);
-      console.log(`Meu carrinho: $ ${itens.totalCarrinho().toFixed(2)}`);
-      console.log(`\nO que deseja fazer hoje:\n`);
-      console.log(`1 - Ver Itens`);
-      console.log(`2 - Ver Carrinho`);
-      console.log(`3 - Remover item do carrinho`);
-      console.log(`4 - Depositar`);
-      console.log(`5 - Finalizar Compra`);
-      console.log(`6 - Cadastrar meu item`);
-      console.log(`7 - Mudar Conta`);
-      console.log(`0 - Sair\n`);
+      header();
+      console.log(
+        `              Olá, ${conta.usuario}, bem vindo a nossa loja!`
+      );
+      console.log(`              Conta nivel: ${conta.nivelConta}`);
+      console.log(`\n              Meu saldo: ß$ ${conta.saldo.toFixed(2)}`);
+      console.log(
+        `              Meu carrinho: ß$ ${itens.totalCarrinho().toFixed(2)}`
+      );
+      console.log(`\n              O que deseja fazer hoje:\n`);
+      console.log(`                      1 - Ver Itens`);
+      console.log(`                      2 - Ver Carrinho`);
+      console.log(`                      3 - Remover item do carrinho`);
+      console.log(`                      4 - Depositar Betouros`);
+      console.log(`                      5 - Finalizar Compra`);
+      console.log(`                      6 - Cadastrar meu item`);
+      console.log(`                      7 - Mudar Conta`);
+      console.log(`\n                      0 - Sair\n`);
 
-      opcao = rl.questionInt("");
+      opcao = rl.questionInt("              ");
 
       if (opcao == 0) {
         console.clear();
-        console.log("Obrigado pela preferência, volte sempre!");
-        console.log("Temos novos itens toda semana!");
+        header();
+        console.log("              Obrigado pela preferência, volte sempre!");
+        console.log("              Temos novos itens toda semana!\n");
         sobre();
         process.exit(0);
       }
@@ -154,20 +160,22 @@ export function main() {
           do {
             submenu = true;
             console.clear();
-            console.log(`\nitens\n`);
-            console.log(`\nEscolha um tipo:\n`);
-            console.log(`1 - Itens Normais`);
-            console.log(`2 - Itens Magicos`);
-            console.log(`3 - Itens Especiais`);
-            console.log(`4 - Pets e Montarias`);
-            console.log(`0 - Voltar`);
+            header();
+            console.log(`              itens`);
+            console.log(`\n              Escolha um tipo:\n`);
+            console.log(`                      1 - Itens Normais`);
+            console.log(`                      2 - Itens Magicos`);
+            console.log(`                      3 - Itens Especiais`);
+            console.log(`                      4 - Pets e Montarias`);
+            console.log(`\n                      0 - Voltar\n`);
 
-            opcaoItens = rl.questionInt("\nQual opcao sera? \n");
+            opcaoItens = rl.questionInt("              ");
 
             switch (opcaoItens) {
               case 1:
                 console.clear();
-                console.log(`\n Lista de Itens Normais\n`);
+                header();
+                console.log(`\n              Lista de Itens Normais\n`);
                 itens.listarItens(opcaoItens);
                 itens.adicionarCarrinho();
                 keyPress();
@@ -175,7 +183,8 @@ export function main() {
 
               case 2:
                 console.clear();
-                console.log(`\n Lista de Itens Magicos\n`);
+                header();
+                console.log(`\n              Lista de Itens Magicos\n`);
                 itens.listarItens(opcaoItens);
                 itens.adicionarCarrinho();
                 keyPress();
@@ -183,7 +192,8 @@ export function main() {
 
               case 3:
                 console.clear();
-                console.log(`\n Lista de Itens Especiais\n`);
+                header();
+                console.log(`\n              Lista de Itens Especiais\n`);
                 itens.listarItens(opcaoItens);
                 itens.adicionarCarrinho();
                 keyPress();
@@ -191,7 +201,8 @@ export function main() {
 
               case 4:
                 console.clear();
-                console.log(`\n Lista de Pets e Montarias\n`);
+                header();
+                console.log(`\n              Lista de Pets e Montarias\n`);
                 itens.listarItens(opcaoItens);
                 itens.adicionarCarrinho();
                 keyPress();
@@ -203,7 +214,10 @@ export function main() {
 
               default:
                 console.clear();
-                console.log(`\n Opa, nao encontrei essa opcao, tente outra.\n`);
+                header();
+                console.log(
+                  `\n              Opa, nao encontrei essa opcao, tente outra.`
+                );
                 keyPress();
                 break;
             }
@@ -212,53 +226,78 @@ export function main() {
 
         case 2: // Meu Carrinho
           console.clear();
-          console.log(`\n Meu Carrinho\n`);
+          header();
+          console.log(`              Meu Carrinho\n`);
           itens.mostrarCarrinho();
-          console.log(`Total do Carrinho: ${itens.totalCarrinho()}`);
+          console.log(
+            `              Total do Carrinho:  ß$ ${itens.totalCarrinho()}`
+          );
           keyPress();
           break;
 
         case 3: // Remover item do carrinho
           console.clear();
-          console.log(`\n Remover Item do Carrinho \n`);
+          header();
+          console.log(`              Remover Item do Carrinho\n`);
           itens.deletarItemCarrinho();
           keyPress();
           break;
 
         case 4: // Depositar Dinheiro
           console.clear();
-          console.log(`\n Depositar\n`);
-          let deposito = rl.questionFloat(`Quanto deseja depositar? $ `);
+          header();
+          console.log(`              Depositar\n`);
+          let deposito = rl.questionFloat(
+            `              Quanto deseja depositar?\n              ß$ `
+          );
           conta.depositar(deposito);
+          console.clear();
+          header();
+          console.log(
+            `\n       Deposito de ß$ ${deposito} realizado com sucesso!\n       Seu novo saldo e de ß$ ${conta.saldo}`
+          );
           keyPress();
           break;
 
         case 5: // Finalizar Compra
           console.clear();
-          console.log(`\n Finalizar Compra\n`);
-          if (conta.saldo > itens.totalCarrinho()) {
-            conta.debito(itens.totalCarrinho());
-            itens.comprar();
-            console.log("A compra dos itens foi realizada com sucesso!");
+          header();
+          console.log(`              Finalizar Compra\n`);
+          let finalizarCompra = rl.questionInt("       Tem certeza de que deseja finalizar a compra? (1 - Sim | 2 Nao)\n       ");
+          if (finalizarCompra == 1){
+            if (conta.saldo > itens.totalCarrinho()) {
+              conta.debito(itens.totalCarrinho());
+              itens.comprar();
+              console.log(
+                "              A compra dos itens foi realizada com sucesso!"
+              );
+            } else {
+              console.log(
+                "              Voce não tem saldo para isso. \n              Deposite mais dinheiro e tente novamente."
+              );
+            }
+          } else if (finalizarCompra == 2) {
+            console.log("       Retornaremos para a home entao.\n");
           } else {
-            console.log(
-              "Voce não tem saldo para isso. Deposite mais dinheiro e tente novamente."
-            );
+            console.log("       Essa nao e uma opcao valida. Tente novamente.")
           }
           keyPress();
           break;
 
         case 6: // Cadastro de Item
           console.clear();
-          console.log(`\n Cadastro de Item\n`);
-          itemNome = rl.question("Nome do item: ");
-          itemPreco = rl.questionFloat("Preco do item: $ ");
-          itemEstoque = rl.questionInt("Estoque: ");
+          header();
+          console.log(`              Cadastro de Item\n`);
+          itemNome = rl.question("                Nome do item: ");
+          itemPreco = rl.questionFloat("                Preco do item: ß$ ");
+          itemEstoque = rl.questionInt("                Estoque: ");
           tipo = rl.keyInSelect(tiposItens, "", { cancel: false }) + 1;
 
           switch (tipo) {
             case 1: // Cadastro de item Normal
-              itemRaridade = rl.questionInt("Nivel de raridade: ");
+              itemRaridade = rl.questionInt(
+                "\n              Nivel de raridade: "
+              );
               itens.cadastrarItem(
                 new ItensNormais(
                   itens.gerarNumero(),
@@ -273,7 +312,7 @@ export function main() {
               break;
 
             case 2: // Cadastro de item Magico
-              nivelMagia = rl.questionInt("Nivel magico: ");
+              nivelMagia = rl.questionInt("\n              Nivel magico: ");
               itens.cadastrarItem(
                 new ItensMagicos(
                   itens.gerarNumero(),
@@ -288,7 +327,9 @@ export function main() {
               break;
 
             case 3: // Cadastro de item Especial
-              universo = rl.question("Universo onde foi conquistado: ");
+              universo = rl.question(
+                "\n              Universo onde foi conquistado: "
+              );
               itens.cadastrarItem(
                 new ItensEspeciais(
                   itens.gerarNumero(),
@@ -303,7 +344,7 @@ export function main() {
               break;
 
             case 4: // Cadastro de pet/montaria
-              habitat = rl.question("Habitat natural: ");
+              habitat = rl.question("\n              Habitat natural: ");
               itens.cadastrarItem(
                 new ItensEspeciais(
                   itens.gerarNumero(),
@@ -323,12 +364,15 @@ export function main() {
 
         case 7: // Mudar Conta
           console.clear();
-          console.log(`\n Mudar Conta\n`);
-          usuario = rl.question(`Qual seu nome: `);
-          saldo = rl.questionFloat(`Qual seu saldo: `);
-          nivelConta = rl.questionInt(`Qual seu nivel: `);
+          header();
+          console.log(`              Mudar Conta\n`);
+          usuario = rl.question(`                 Qual seu nome: `);
+          saldo = rl.questionFloat(`                 Qual seu saldo: `);
+          nivelConta = rl.questionInt(`                 Qual seu nivel: `);
           conta = new Conta(usuario, saldo, nivelConta);
-          console.log(`Sua conta foi atualizada com sucesso!\n`);
+          console.log(
+            `\n              Sua conta foi atualizada com sucesso!`
+          );
           keyPress();
           break;
       }
@@ -338,26 +382,63 @@ export function main() {
   }
 }
 
+export function header(): void {
+  console.log(
+    `╔═════════════════════════════════════════════════════════════════╗`
+  );
+  console.log(
+    `║☼                                                              ☼ ║`
+  );
+  console.log(
+    `║                      Φ RaiMystic Store™ Ω                       ║ `
+  );
+  console.log(
+    `║☼                                                              ☼ ║`
+  );
+  console.log(
+    `╙—————————————————————————————————————————————————————————————————╜`
+  );
+  console.log(
+    `                                                                   `
+  );
+}
+
 // Método de KeyPress para solicitar que uma tecla seja pressionada para continuar.
 export function keyPress(): void {
   try {
-    console.log(`Pressione enter para continuar...`);
+    console.log(`\n              Pressione enter para continuar...`);
     rl.prompt();
   } catch {
-    console.log("Erro na execução da função, tente novamente.");
+    console.log("       Erro na execução da função, tente novamente.");
   }
 }
 
 // Método de "sobre" para exibição dos créditos ao finalizar o programa.
 export function sobre(): void {
-  console.log("##################################################");
-  console.log("                                                  ");
-  console.log("  Projeto Desenvolvido por:                       ");
-  console.log("  Lucas Alves Pinheiro                            ");
-  console.log("  E-mail: l.pinheiro.w@gmail.com.br               ");
-  console.log("  GitHub: github.com/RaideriSpace                 ");
-  console.log("                                                  ");
-  console.log("##################################################");
+  console.log(
+    "╓—————————————————————————————————————————————————————————————————╖"
+  );
+  console.log(
+    "║                                                                 ║"
+  );
+  console.log(
+    "║                Projeto Desenvolvido por:                        ║"
+  );
+  console.log(
+    "║                Lucas Alves Pinheiro                             ║"
+  );
+  console.log(
+    "║                E-mail: l.pinheiro.w@gmail.com.br                ║"
+  );
+  console.log(
+    "║                GitHub: github.com/RaideriSpace                  ║"
+  );
+  console.log(
+    "║                                                                 ║"
+  );
+  console.log(
+    "╚═════════════════════════════════════════════════════════════════╝"
+  );
   // console.log(
   //   "                                                 ",
   //   colors.reset

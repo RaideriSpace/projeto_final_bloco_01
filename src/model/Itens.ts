@@ -1,3 +1,5 @@
+import { header } from "../../Menu";
+
 // Exportação da classe abstrata "Itens"
 export abstract class Itens {
   // Declaração das características privadas da classe abstrata "Itens"
@@ -93,13 +95,14 @@ export abstract class Itens {
         tipo = "Sem tipo definido";
         break;
     }
-
-    console.log(`ID: ${this.itemID} - ${this.itemNome}`);
+    console.log(`              ID: ${this.itemID} - ${this.itemNome}`);
     console.log(
-      `Preco: $ ${this.itemPreco.toFixed(2)} | Estoque: ${this.itemEstoque}`
+      `              Preco: ß$ ${this.itemPreco.toFixed(2)} | Estoque: ${
+        this.itemEstoque
+      }`
     );
     if (this.itemDono != undefined) {
-      console.log(`Vendedor: ${this._itemDono}`);
+      console.log(`              Vendedor: ${this._itemDono}`);
     } 
   }
 

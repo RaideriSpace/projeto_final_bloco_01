@@ -1,5 +1,8 @@
 # RaiMystic Store - Loja de Produtos Mágicos (e alguns não tão mágicos assim)
 
+## V1.0
+- Melhorias esteticas gerais;
+
 ## V0.3.2
 - Adição do método ```DeletarItemCarrinho``` no ItemController.ts.
 - Aplicação do método ```DeletarItemCarrinho``` no Menu.ts.

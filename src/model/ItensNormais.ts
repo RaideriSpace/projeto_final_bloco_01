@@ -25,6 +25,6 @@ export class ItensNormais extends Itens {
 
   public mostrar(): void {
     super.mostrar();
-    console.log(`Raridade: ${this.nivelRaridade.toFixed(1)}\n`);
+    console.log(`              Raridade: ${this.nivelRaridade.toFixed(1)}\n`);
   }
 }

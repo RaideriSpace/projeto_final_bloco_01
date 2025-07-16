@@ -25,6 +25,6 @@ export class ItensEspeciais extends Itens {
 
   public mostrar(): void {
     super.mostrar();
-    console.log(`Conquistado em: ${this.universoRetirado}\n`);
+    console.log(`              Conquistado em: ${this.universoRetirado}\n`);
   }
 }

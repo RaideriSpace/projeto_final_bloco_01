@@ -25,6 +25,6 @@ export class ItensMagicos extends Itens {
 
   public mostrar(): void {
     super.mostrar();
-    console.log(`Nivel Mágico: ${this.nivelMagia.toFixed(1)}\n`);
+    console.log(`              Nivel Mágico: ${this.nivelMagia.toFixed(1)}\n`);
   }
 }
